@@ -1,0 +1,18 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.kt_hr {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1em; }
+
+.kt_radio_inline {
+  background: red; }
