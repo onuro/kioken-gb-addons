@@ -17,7 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-//test
 /**
  * Block Initializer. Init only for KiokenTheme built themes.
  */
