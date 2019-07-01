@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Kioken_Post_Meta_Plugin {
+class Kioken_GB_Addons_Plugin {
 	/**
 	 * Constructor
 	 */
@@ -152,7 +152,7 @@ public function is_post_type($type){
 	}
 }
 
-return new Kioken_Post_Meta_Plugin();
+return new Kioken_GB_Addons_Plugin();
 
 
 
