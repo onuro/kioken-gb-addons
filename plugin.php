@@ -25,13 +25,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	 require_once plugin_dir_path( __FILE__ ) . 'inc/init.php';
 
-	 if ( defined('KIOKEN_ZENGINTHEME') && KIOKEN_ZENGINTHEME === true ) {
-			require_once plugin_dir_path( __FILE__ ) . 'inc/customizer-fields/preloader.php';
-			require_once plugin_dir_path( __FILE__ ) . 'inc/customizer-fields/blog.php';
-			require_once plugin_dir_path( __FILE__ ) . 'inc/customizer-fields/header.php';
-			require_once plugin_dir_path( __FILE__ ) . 'inc/customizer-fields/pagebanner.php';
-	 }
-
 
 
  }
