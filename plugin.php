@@ -17,7 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KIOKEN_ZENGINTHEME', true);
 /**
  * Block Initializer. Init only for KiokenTheme built themes.
  */
