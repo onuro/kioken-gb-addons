@@ -3,19 +3,7 @@ function kirki_header_additional_array(){
 
 	$fields = array(
 
-    // Header layout
-		'header_layout'                 	=> array(
-			'type'    => 'select',
-			'label'   => esc_html__( 'Header Layout', 'gutenbooster' ),
-			'section' => 'header',
-			'priority' => 1,
-			'default' => 'v3',
-			'choices' => array(
-				'v1' => esc_html__( 'Header V1 - Logo Centered', 'gutenbooster' ),
-				'v2' => esc_html__( 'Header v2 - Logo Centered', 'gutenbooster' ),
-				'v3' => esc_html__( 'Header v3 - Logo Left', 'gutenbooster' ),
-			),
-		),
+    
 
 
 		// Header Stickyness
