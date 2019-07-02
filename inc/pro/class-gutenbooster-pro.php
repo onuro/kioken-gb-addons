@@ -18,6 +18,7 @@ require_once KIKEN_ADDONS_PRO_FUNC_PATH . 'customizer-fields/preloader.php';
 require_once KIKEN_ADDONS_PRO_FUNC_PATH . 'customizer-fields/blog.php';
 require_once KIKEN_ADDONS_PRO_FUNC_PATH . 'customizer-fields/header.php';
 require_once KIKEN_ADDONS_PRO_FUNC_PATH . 'customizer-fields/pagebanner.php';
+require_once KIKEN_ADDONS_PRO_FUNC_PATH . 'customizer-fields/footer.php';
 
 class Kioken_Addons_ProInit {
   /**
