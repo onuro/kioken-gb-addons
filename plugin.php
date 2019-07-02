@@ -5,7 +5,7 @@
  * Description: Options and settings package for GutenBooster Theme.
  * Author: Kioken Theme
  * Author URI: https://kiokentheme.com
- * Version: 0.9.0
+ * Version: 1.0.0
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *
