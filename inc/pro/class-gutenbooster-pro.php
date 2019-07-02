@@ -45,8 +45,20 @@ class Kioken_Addons_ProInit {
 
     //hook - add pro body class
 		add_action( 'body_class', array( $this, 'pro_body_class' ) );
+    //hook add pro
+    add_filter( 'init', array( $this, 'proactive_localize_script' ) );
 
 	}
+
+  public function proactive_localize_script() {
+    wp_localize_script(
+			'kioken_page_options-build-js',
+			'kioken_theme_pro',
+			array(
+				'is_pro'		 	=> true,
+			)
+		);
+  }
 
   /**
 	 * Pro Enabler Browser Class for Body

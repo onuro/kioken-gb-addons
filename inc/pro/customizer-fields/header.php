@@ -3,9 +3,6 @@ function kirki_header_additional_array(){
 
 	$fields = array(
 
-    
-
-
 		// Header Stickyness
 		'header_sticky'                     => array(
 			'type'        	=> 'select',

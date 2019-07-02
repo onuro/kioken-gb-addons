@@ -7,9 +7,9 @@ const { PanelBody, RangeControl, RadioControl, SelectControl, ToggleControl, Tex
 import ColorPicker from './color-picker';
 import Repeater from 'react-simple-repeater';
 
-import {showPbCustomizer, pbgc, pbg_opacity, pb_height, pb_txtcolor } from './customizer_defaults';
+import {showPbCustomizer, pbgc, pbg_opacity, pb_height, pb_txtcolor, is_zengin } from './customizer_defaults';
 
-
+console.log (is_zengin);
 //controls
 export const MetaToggleControl = compose(
   withDispatch( ( dispatch, props ) => {
@@ -374,8 +374,8 @@ console.log ('customizer show pb is ' + showPbCustomizer);
   return (
     <PanelBody initialOpen={false} title={__('Page Banner Settings')}>
 
-      <MetaSelectControl className={'kt_radio_inline'} label={__( 'Page Banner' )} fieldName = { 'show_page_banner' } options={ [ { value: 'default', label: 'Customizer Default' }, { value: 'hide', label: 'Hide' }, { value: '1', label: 'Show' } ] } customizerVal={showPbCustomizer} />
-      { props.showPB === '1' && (
+      <MetaSelectControl className={'kt_radio_inline'} label={__( 'Page Banner' )} fieldName = { 'show_page_banner' } options={ [ { value: 'default', label: 'Customizer Default' }, { value: 'hide', label: 'Hide' }, { value: '1', label: 'Show' } ] } />
+      { props.showPB !== 'hide' && (
         <div>
         <div className={'kt_hr'}></div>
         <ToggleControl
@@ -390,52 +390,57 @@ console.log ('customizer show pb is ' + showPbCustomizer);
             <MetaRangeControl label={__( 'Background Image Opacity' )} fieldName = { 'page_bannerbg_opacity' } min={0.05} step={0.05} max={ 1 } customizerVal={pbg_opacity} />
             <MetaRangeControl label={__( 'Height' )} help={__('Height value in vh(viewport height)')} fieldName = { 'page_banner_height' } min={25} step={5} max={ 100 } customizerVal={pb_height} />
             <MetaRadioControl className={'kt_radio_inline'} label={__( 'Text Color' )} fieldName = { 'page_banner_text_color' } options={ [ { value: 'white', label: 'White' }, { value: 'dark', label: 'Dark' } ] } customizerVal={pb_txtcolor} />
-            <ToggleControl
-              label={ props.enableParallax ? __('Parallax Effect Enabled') : __('Enable Parallax Effect') }
-              help={ ! props.enableParallax ? __('Applies a parallax effect to title and background image on scroll ') : ''}
-              checked={props.enableParallax}
-              onChange={check => props.setEnableParallax( check ) }
-            />
-            <ToggleControl
-              label={ props.enableAnimate ? __('Animated Contents Enabled') : __('Enable Animated Content') }
-              help={ ! props.enableAnimate ? __('Animates the title and other content on page load') : ''}
-              checked={props.enableAnimate}
-              onChange={check => props.setEnableAnimate( check ) }
-            />
+            {is_zengin &&
+              <div>
+                <ToggleControl
+                  label={ props.enableParallax ? __('Parallax Effect Enabled') : __('Enable Parallax Effect') }
+                  help={ ! props.enableParallax ? __('Applies a parallax effect to title and background image on scroll ') : ''}
+                  checked={props.enableParallax}
+                  onChange={check => props.setEnableParallax( check ) }
+                />
+                <ToggleControl
+                  label={ props.enableAnimate ? __('Animated Contents Enabled') : __('Enable Animated Content') }
+                  help={ ! props.enableAnimate ? __('Animates the title and other content on page load') : ''}
+                  checked={props.enableAnimate}
+                  onChange={check => props.setEnableAnimate( check ) }
+                />
+                <PanelBody initialOpen={true} title={__('Page Banner Content')}>
+                  { props.enableAnimate && (
+                    <div>
+                    <MetaTextControl label={__( 'Animated Title Line 1' )}  fieldName = { 'pb_title_line_1' }  />
+                    <MetaTextControl label={__( 'Animated Title Line 2' )}  fieldName = { 'pb_title_line_2' }  />
+                    <MetaTextControl label={__( 'Animated Title Line 3' )}  fieldName = { 'pb_title_line_3' }  />
+                    <div className={'kt_hr'}></div>
+                    </div>
+                  )}
+                  <MetaTextControl label={__( 'Subtitle' )}  fieldName = { 'pagebanner_subtitle' }  />
+                  <MetaSelectControl label={__( 'Subtitle Decoration' )} fieldName = { 'page_banner_subtitle_around' }
+                  options={ [ { value: 'line', label: 'Line' }, { value: 'square', label: 'Square' }, { value: 'circle', label: 'Circle' } ] } />
+
+                  <ToggleControl
+                    label={ props.showButton ? __('Displaying Button') : __('Show Button') }
+                    help={ ! props.showButton ? __('Displays a call to action button') : ''}
+                    checked={props.showButton}
+                    onChange={check => props.setShowButton( check ) }
+                  />
+                  { props.showButton && (
+                    <div>
+                      <URLInputControl label={__('Button Link')} fieldName={ 'pb_button_url' } />
+                      <MetaTextControl label={__( 'Button Text' )}  fieldName = { 'pb_button_text' }  />
+                      <MetaSelectControl label={__( 'Button Style' )} fieldName = { 'pb_button_style' }
+                      options={ [ { value: 'std', label: 'Standard' }, { value: 'bavarian', label: 'Bavarian Style' } ] } />
+
+                    </div>
+                  )}
+
+
+
+                </PanelBody>
+              </div>
+            }
           </div>
         )}
-        <PanelBody initialOpen={true} title={__('Page Banner Content')}>
-          { props.enableAnimate && (
-            <div>
-            <MetaTextControl label={__( 'Animated Title Line 1' )}  fieldName = { 'pb_title_line_1' }  />
-            <MetaTextControl label={__( 'Animated Title Line 2' )}  fieldName = { 'pb_title_line_2' }  />
-            <MetaTextControl label={__( 'Animated Title Line 3' )}  fieldName = { 'pb_title_line_3' }  />
-            <div className={'kt_hr'}></div>
-            </div>
-          )}
-          <MetaTextControl label={__( 'Subtitle' )}  fieldName = { 'pagebanner_subtitle' }  />
-          <MetaSelectControl label={__( 'Subtitle Decoration' )} fieldName = { 'page_banner_subtitle_around' }
-          options={ [ { value: 'line', label: 'Line' }, { value: 'square', label: 'Square' }, { value: 'circle', label: 'Circle' } ] } />
 
-          <ToggleControl
-            label={ props.showButton ? __('Displaying Button') : __('Show Button') }
-            help={ ! props.showButton ? __('Displays a call to action button') : ''}
-            checked={props.showButton}
-            onChange={check => props.setShowButton( check ) }
-          />
-          { props.showButton && (
-            <div>
-              <URLInputControl label={__('Button Link')} fieldName={ 'pb_button_url' } />
-              <MetaTextControl label={__( 'Button Text' )}  fieldName = { 'pb_button_text' }  />
-              <MetaSelectControl label={__( 'Button Style' )} fieldName = { 'pb_button_style' }
-              options={ [ { value: 'std', label: 'Standard' }, { value: 'bavarian', label: 'Bavarian Style' } ] } />
-
-            </div>
-          )}
-
-
-
-        </PanelBody>
         </div>
       )}
 
