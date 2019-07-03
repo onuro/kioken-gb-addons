@@ -259,7 +259,7 @@ export const PageTitleSettings = compose(
   } )
 )( ( props ) => {
   return (
-
+    props.showPB === 'hide' &&
     <PanelBody initialOpen={false} title={__('Page Title Settings')}>
       <ToggleControl
         label={ props.label }

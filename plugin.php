@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 require_once plugin_dir_path( __FILE__ ) . 'inc/init.php';
 
 	 if ( file_exists(plugin_dir_path( __FILE__ ) . 'inc/pro/class-gutenbooster-pro.php') ) {
-		 // require_once plugin_dir_path( __FILE__ ) . 'inc/pro/class-gutenbooster-pro.php';
+		 require_once plugin_dir_path( __FILE__ ) . 'inc/pro/class-gutenbooster-pro.php';
 	 }
 
  }
