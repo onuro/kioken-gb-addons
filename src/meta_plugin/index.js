@@ -1,7 +1,7 @@
 //WP Dependencies
 const { __ } = wp.i18n;
 const { registerPlugin } = wp.plugins;
-const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
+const { PluginSidebar, PluginSidebarMoreMenuItem, PluginDocumentSetting } = wp.editPost;
 const { Component, Fragment, } = wp.element;
 const { PanelBody, TextControl } = wp.components;
 const { select, dispatch, withSelect, withDispatch } = wp.data;
@@ -20,11 +20,10 @@ class KiokenPostMeta extends Component {
 		super( ...arguments );
   }
 
-	render() {
-
 	// const testData = select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ 'show_page_banner' ];
 	// console.log ('pb bg color is ' + pbgc);
 
+	render() {
 
 		return (
 			<Fragment>
@@ -47,6 +46,9 @@ class KiokenPostMeta extends Component {
 	}
 }
 
+
 registerPlugin( 'kioken-postmeta', {
 	render: KiokenPostMeta,
 } );
+
+

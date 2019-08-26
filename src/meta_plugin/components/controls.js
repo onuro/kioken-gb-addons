@@ -9,7 +9,7 @@ import Repeater from 'react-simple-repeater';
 
 import {showPbCustomizer, pbgc, pbg_opacity, pb_height, pb_txtcolor, is_zengin } from './customizer_defaults';
 
-console.log (is_zengin);
+// console.log (is_zengin);
 //controls
 export const MetaToggleControl = compose(
   withDispatch( ( dispatch, props ) => {
@@ -369,7 +369,7 @@ export const PageBannerSettings = compose(
     }
   } )
 )( ( props ) => {
-console.log ('customizer show pb is ' + showPbCustomizer);
+// console.log ('customizer show pb is ' + showPbCustomizer);
 
   return (
     <PanelBody initialOpen={false} title={__('Page Banner Settings')}>

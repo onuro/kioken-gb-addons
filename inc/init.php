@@ -62,16 +62,16 @@ class Kioken_GB_Addons_Plugin {
 		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
 	);
-	if (function_exists('gutenbooster_get_option')) {
+	if (function_exists('gutenbooster_getmod')) {
 		wp_localize_script(
 			'kioken_page_options-build-js',
 			'kioken_page_options_params',
 			array(
-				'show_pb'		 	=> gutenbooster_get_option('enable_page_banner'),
-				'pbgc'		 	=> gutenbooster_get_option('page_banner_bgcolor'),
-				'pbg_opacity'		 	=> gutenbooster_get_option('page_bannerbg_opacity'),
-				'pb_height'		 	=> gutenbooster_get_option('page_banner_height'),
-				'pb_txtcolor'		 	=> gutenbooster_get_option('page_banner_text_color'),
+				'show_pb'		 	=> gutenbooster_getmod('enable_page_banner'),
+				'pbgc'		 	=> gutenbooster_getmod('page_banner_bgcolor'),
+				'pbg_opacity'		 	=> gutenbooster_getmod('page_bannerbg_opacity'),
+				'pb_height'		 	=> gutenbooster_getmod('page_banner_height'),
+				'pb_txtcolor'		 	=> gutenbooster_getmod('page_banner_text_color'),
 			)
 		);
 	}
