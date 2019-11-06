@@ -6,8 +6,10 @@
 }
 
 .kt_radio_inline {
-
-  .components-radio-control__option {
+	.components-base-control__label {
+		display: block;
+	}
+  	.components-radio-control__option {
     float: left;
     margin-right: 1em;
   }

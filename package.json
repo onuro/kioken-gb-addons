@@ -10,6 +10,7 @@
   "dependencies": {
     "cgb-scripts": "1.17.0",
     "classnames": "^2.2.6",
+    "gulp": "^4.0.2",
     "react-simple-repeater": "^0.1.10"
   }
 }

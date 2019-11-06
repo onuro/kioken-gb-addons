@@ -9,7 +9,6 @@ import Repeater from 'react-simple-repeater';
 
 import {showPbCustomizer, pbgc, pbg_opacity, pb_height, pb_txtcolor, is_zengin } from './customizer_defaults';
 
-// console.log (is_zengin);
 //controls
 export const MetaToggleControl = compose(
   withDispatch( ( dispatch, props ) => {
@@ -116,6 +115,7 @@ export const MetaSelectControl = compose(
         .getEditedPostAttribute( 'meta' )
         [ props.fieldName ],
       label: props.label,
+      default: props.default,
       options: props.options,
       customizerVal: props.customizerVal,
     }
@@ -124,7 +124,7 @@ export const MetaSelectControl = compose(
   return (
       <SelectControl
         label={ props.label }
-        value={props.metaFieldValue ? props.metaFieldValue : props.customizerVal ? props.customizerVal : ''}
+        value={props.metaFieldValue ? props.metaFieldValue : props.customizerVal ? props.customizerVal : props.default }
         className={'kt_flex_left'}
         onChange={value => props.setMetaFieldValue( value ) }
         options={ props.options }
@@ -149,6 +149,7 @@ export const MetaRadioControl = compose(
         [ props.fieldName ],
       className: props.className,
       label: props.label,
+      default: props.default,
       help: props.help,
       options: props.options,
       customizerVal: props.customizerVal,
@@ -160,7 +161,7 @@ export const MetaRadioControl = compose(
       label={ props.label }
       help={props.help}
       className={props.className}
-      selected={ props.metaFieldValue ? props.metaFieldValue : props.customizerVal ? props.customizerVal : '' }
+      selected={ props.metaFieldValue ? props.metaFieldValue : props.customizerVal ? props.customizerVal : props.default }
       onChange={value => props.setMetaFieldValue( value ) }
       options={ props.options }
     />
@@ -255,18 +256,21 @@ export const PageTitleSettings = compose(
         [ 'show_pagetitle' ],
       showPB: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ 'show_page_banner' ],
       label: props.label,
+      default: props.default,
     }
   } )
 )( ( props ) => {
   return (
     props.showPB === 'hide' &&
     <PanelBody initialOpen={false} title={__('Page Title Settings')}>
-      <ToggleControl
+	<MetaRadioControl className={'kt_radio_inline'} label={__( 'Page Title:' )} default={ 'show' } fieldName = { 'show_pagetitle' } options={ [ { value: 'show', label: 'Show' }, { value: 'hide', label: 'Hide' } ] } />
+      {/*<ToggleControl
         label={ props.label }
-        checked={props.showPageTitle}
+		default= { true }
+        checked={ props.showPageTitle ? props.showPageTitle : props.default }
         onChange={check => props.setMetaFieldValue( check ) }
-      />
-      { props.showPageTitle &&
+      />*/}
+      { 'show' === props.showPageTitle &&
         <MetaSelectControl label={__( 'Title Alignment' )} fieldName = { 'page_title_alignment' } options={ [ { value: 'center', label: 'Center' }, { value: 'left', label: 'Left' } ] } />
       }
     </PanelBody>
@@ -303,9 +307,9 @@ export const SiteHeaderSettings = compose(
       />
       { props.overrideHeader &&
         <div>
-          <MetaSelectControl label={__( 'Header Wrapper' )} fieldName = { 'header_wrapper' } options={ [ { value: 'full-width', label: 'Full Width' }, { value: 'wrapped', label: 'Wrapped' } ] } />
-          <MetaRadioControl className={'kt_radio_inline'} label={__( 'Header Background' )} fieldName = { 'headerbg' } options={ [ { value: 'white', label: 'White' }, { value: 'transparent', label: 'Transparent' } ] } />
-          <MetaRadioControl className={'kt_radio_inline'} label={__( 'Header Text Color' )} fieldName = { 'header_txtcolor' } options={ [ { value: 'white', label: 'White' }, { value: 'dark', label: 'Dark' } ] } />
+          <MetaSelectControl label={__( 'Header Wrapper' )} fieldName = { 'header_wrapper' } default={ 'wrapped' } options={ [ { value: 'full-width', label: 'Full Width' }, { value: 'wrapped', label: 'Wrapped' } ] } />
+          <MetaRadioControl className={'kt_radio_inline'} label={__( 'Header Background' )} default={ 'white' } fieldName = { 'headerbg' } options={ [ { value: 'white', label: 'White' }, { value: 'transparent', label: 'Transparent' } ] } />
+          <MetaRadioControl className={'kt_radio_inline'} label={__( 'Header Text Color' )} default={ 'dark' } fieldName = { 'header_txtcolor' } options={ [ { value: 'white', label: 'White' }, { value: 'dark', label: 'Dark' } ] } />
         </div>
       }
     </PanelBody>
@@ -390,7 +394,7 @@ export const PageBannerSettings = compose(
             <MetaRangeControl label={__( 'Background Image Opacity' )} fieldName = { 'page_bannerbg_opacity' } min={0.05} step={0.05} max={ 1 } customizerVal={pbg_opacity} />
             <MetaRangeControl label={__( 'Height' )} help={__('Height value in vh(viewport height)')} fieldName = { 'page_banner_height' } min={25} step={5} max={ 100 } customizerVal={pb_height} />
             <MetaRadioControl className={'kt_radio_inline'} label={__( 'Text Color' )} fieldName = { 'page_banner_text_color' } options={ [ { value: 'white', label: 'White' }, { value: 'dark', label: 'Dark' } ] } customizerVal={pb_txtcolor} />
-            {is_zengin &&
+            { is_zengin &&
               <div>
                 <ToggleControl
                   label={ props.enableParallax ? __('Parallax Effect Enabled') : __('Enable Parallax Effect') }
@@ -448,5 +452,3 @@ export const PageBannerSettings = compose(
     </PanelBody>
   );
 } );
-
-

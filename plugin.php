@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Kioken GB Addons
+ * Plugin Name: GutenBooster Addons
  * Plugin URI: https://kiokentheme.com
  * Description: Options and settings package for GutenBooster Theme.
  * Author: Kioken Theme
@@ -26,4 +26,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 require_once plugin_dir_path( __FILE__ ) . 'inc/init.php';
 
  }
-

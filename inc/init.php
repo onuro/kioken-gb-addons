@@ -112,11 +112,11 @@ public function is_post_type($type){
 	public function kpageoptions_register_post_meta() {
 
 			//page title
-	    register_post_meta( '', 'show_pagetitle', array( 'show_in_rest' => true, 'single' => true, 'type' => 'boolean', ) );
+	    register_post_meta( '', 'show_pagetitle', array( 'show_in_rest' => true, 'single' => true, 'type' => 'string', ) );
 			register_post_meta( '', 'page_title_alignment', array( 'show_in_rest' => true, 'single' => true, 'type' => 'string',) );
 
 			//site header
-	    register_post_meta( '', 'override_header', array( 'show_in_rest' => true, 'single' => true, 'type' => 'boolean', ) );
+	    	register_post_meta( '', 'override_header', array( 'show_in_rest' => true, 'single' => true, 'type' => 'boolean', ) );
 			register_post_meta( '', 'header_wrapper', array( 'show_in_rest' => true, 'single' => true, 'type' => 'string') );
 			register_post_meta( '', 'headerbg', array( 'show_in_rest' => true, 'single' => true, 'type' => 'string') );
 			register_post_meta( '', 'header_txtcolor', array( 'show_in_rest' => true, 'single' => true, 'type' => 'string') );
@@ -153,9 +153,3 @@ public function is_post_type($type){
 }
 
 return new Kioken_GB_Addons_Plugin();
-
-
-
-
-
-

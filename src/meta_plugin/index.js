@@ -8,9 +8,11 @@ const { select, dispatch, withSelect, withDispatch } = wp.data;
 const { compose } = wp.compose;
 
 import {PageTitleSettings, SiteHeaderSettings, PageBannerSettings, LayoutSettings } from './components/controls';
-import {showPbCustomizer, pbgc } from './components/customizer_defaults';
+import {showPbCustomizer, pbgc, is_zengin } from './components/customizer_defaults';
 import icons from './components/icons';
 import './editor.scss';
+
+console.log (is_zengin);
 
 /**
  * Build the row edit
@@ -20,20 +22,22 @@ class KiokenPostMeta extends Component {
 		super( ...arguments );
   }
 
-	// const testData = select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ 'show_page_banner' ];
-	// console.log ('pb bg color is ' + pbgc);
+
 
 	render() {
+
+		// const testData = select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ 'show_pagetitle' ];
+		// console.log ('pb bg color is ' + testData);
 
 		return (
 			<Fragment>
       <PluginSidebarMoreMenuItem
 					target="kioken-postmeta"
-					icon={ icons.tune }
+					icon={ icons.brand }
 				>
-					{ __( 'Page Options' ) }
+					{ __( 'GutenBooster Page Options' ) }
 				</PluginSidebarMoreMenuItem>
-        <PluginSidebar isPinnable={ true } icon={ icons.tune } name="kioken-postmeta" title={ __( 'Page Options' ) } >
+        <PluginSidebar isPinnable={ true } icon={ icons.brand } name="kioken-postmeta" title={ __( 'Page Options' ) } >
 
 						<PageBannerSettings />
 						<LayoutSettings />
@@ -50,5 +54,3 @@ class KiokenPostMeta extends Component {
 registerPlugin( 'kioken-postmeta', {
 	render: KiokenPostMeta,
 } );
-
-
