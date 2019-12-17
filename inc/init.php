@@ -68,6 +68,7 @@ class Kioken_GB_Addons_Plugin {
 			'kioken_page_options_params',
 			array(
 				'show_pb'		 	=> gutenbooster_getmod('enable_page_banner'),
+				'alt_pbimage'	=> gutenbooster_getmod('page_banner_altimage'), // Alternate page banner image
 				'pbgc'		 	=> gutenbooster_getmod('page_banner_bgcolor'),
 				'pbg_opacity'		 	=> gutenbooster_getmod('page_bannerbg_opacity'),
 				'pb_height'		 	=> gutenbooster_getmod('page_banner_height'),
@@ -129,6 +130,10 @@ public function is_post_type($type){
 			//page_banner
 			register_post_meta( '', 'show_page_banner', array( 'show_in_rest' => true, 'single' => true, 'type' => 'string', ) );
 			register_post_meta( '', 'override_page_banner_settings', array( 'show_in_rest' => true, 'single' => true, 'type' => 'boolean', ) );
+
+			//alternate page banner image
+			register_post_meta( '', 'page_banner_altimage', array( 'show_in_rest' => true, 'single' => true, 'type' => 'string') );
+
 			register_post_meta( '', 'page_banner_bgcolor', array( 'show_in_rest' => true, 'single' => true, 'type' => 'string') );
 			register_post_meta( '', 'page_bannerbg_opacity', array( 'show_in_rest' => true, 'single' => true, 'type' => 'number') );
 			register_post_meta( '', 'page_banner_height', array( 'show_in_rest' => true, 'single' => true, 'type' => 'number') );

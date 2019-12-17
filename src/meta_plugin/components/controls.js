@@ -390,6 +390,7 @@ export const PageBannerSettings = compose(
         />
         { props.overridePB && (
           <div>
+          	<MetaTextControl label={__( 'Alternate Image' )}  fieldName = { 'page_banner_altimage' } />
             <MetaColorControl label={__( 'Background Color' )} fieldName = { 'page_banner_bgcolor' } customizerVal = {pbgc} />
             <MetaRangeControl label={__( 'Background Image Opacity' )} fieldName = { 'page_bannerbg_opacity' } min={0.05} step={0.05} max={ 1 } customizerVal={pbg_opacity} />
             <MetaRangeControl label={__( 'Height' )} help={__('Height value in vh(viewport height)')} fieldName = { 'page_banner_height' } min={25} step={5} max={ 100 } customizerVal={pb_height} />
